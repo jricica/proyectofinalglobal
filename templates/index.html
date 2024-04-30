@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Préstamo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Solicitud de Préstamo</h1>
+        <form id="loan-form">
+            <label for="amount">Cantidad:</label>
+            <input type="text" id="amount" name="amount" placeholder="Ingrese la cantidad">
+            <label for="duration">Duración (en meses):</label>
+            <input type="text" id="duration" name="duration" placeholder="Ingrese la duración">
+            <button type="submit">Solicitar Préstamo</button>
+        </form>
+        <div id="chat-container">
+            <div id="chat-output"></div>
+            <input type="text" id="user-input" placeholder="Escribe aquí..." autocomplete="off">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
