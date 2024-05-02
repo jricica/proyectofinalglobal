@@ -146,10 +146,12 @@ def user_dashboard():
             except jwt.InvalidTokenError:
                 return redirect(url_for('logout_user'))
             
-            # Registrar el token como utilizado
-            used_token = UsedToken(token=token)
-            db.session.add(used_token)
-            db.session.commit()
+            # Registrar el token como utilizado si no existe en la base de datos
+            existing_token = UsedToken.query.filter_by(token=token).first()
+            if not existing_token:
+                used_token = UsedToken(token=token)
+                db.session.add(used_token)
+                db.session.commit()
             
             return render_template('user_dashboard.html', remaining_time=remaining_time())
     return redirect(url_for('home'))
@@ -169,7 +171,7 @@ def login():
         new_secret_key = generate_secret_key()
         app.config["SECRET_KEY"] = new_secret_key
         
-        token = jwt.encode({'user': user.email, 'exp': datetime.utcnow() + timedelta(seconds=60)}, new_secret_key, algorithm='HS256')
+        token = jwt.encode({'user': user.email, 'exp': datetime.utcnow() + timedelta(seconds=5000)}, new_secret_key, algorithm='HS256')
         session['token'] = token
         
         # Guardar registro de ingreso en la base de datos
@@ -225,7 +227,34 @@ def register():
 
     return redirect(url_for("home"))
 
+@app.route("/boveda")
+def boveda():
+    remaining = remaining_time()  # O cualquier otra forma de obtener remaining_time
+    return render_template("boveda.html", remaining_time=remaining)
+
+
+@app.route("/contratos")
+def contratos():
+    remaining = remaining_time()  # O cualquier otra forma de obtener remaining_time
+    return render_template("contratos.html", remaining_time=remaining)
+
+@app.route("/inversiones")
+def inversiones():
+    remaining = remaining_time()  # O cualquier otra forma de obtener remaining_time
+    return render_template("inversiones.html", remaining_time=remaining)
+
+@app.route("/perfil")
+def perfil():
+    remaining = remaining_time()  # O cualquier otra forma de obtener remaining_time
+    return render_template("perfil.html", remaining_time=remaining)
+
+@app.route("/transacciones")
+def transacciones():
+    remaining = remaining_time()  # O cualquier otra forma de obtener remaining_time
+    return render_template("transacciones.html", remaining_time=remaining)
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True, port=8000)
+

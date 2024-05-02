@@ -3,89 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
+    <title>Inicio</title>
 
-    <!DOCTYPE html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPMuKnRw-ZKMd1waN4s7ngLYdQjZYOQy3Al2oECtS4YLesMW57Is511bilwF-8IWgFU7-AuYLaIP-JFRn2TqtF8Wqikm9owmFEUolIqTIp71_luyyFDj1AO8txsUh8O8hNltlGwm5Vsc9p9EWwI0sWhd9kMoM83CxLs_Mb0B9G2DxC8sHUJEIMTfxa69b_/s320/ufm-bank-high-resolution-logo-transparent.png" type="">
-   
-    <link rel="stylesheet" href="static", filename='https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'>
-    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/after.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+    <style>
+      /* Estilos para la barra de navegación */
+      .navbar-nav {
+          display: flex;
+          align-items: center;
+      }
+
+      .nav-item {
+          margin-right: 20px;
+      }
+
+      .navbar-brand {
+          margin-right: auto; /* Mueve el brand logo a la izquierda */
+      }
+
+      .nav_search-btn {
+          margin-left: auto; /* Mueve el botón de búsqueda a la derecha */
+      }
+  </style>
+    <img id="logo" src="static\bg7.jpg" alt="Logo del BAC" style="width: 200px; height: auto;">
+</head>
+<body>
     <header class="header_section">
         <div class="container-fluid">
-          <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="afterlogin.html">
-              <span>
-                BAC: SafeSphere
-              </span>
-            </a>
-          </head>
-    <body>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class=""> </span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav  ">
-                <li class="nav-item active">
-                  <a class="nav-link" href="{{ url_for('home') }}">Boveda<span class="sr-only"></span></a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="{{ url_for('home') }}">Contratos<span class="sr-only"></span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ url_for('home') }}">Transacciones<span class="sr-only"></span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ url_for('home') }}">Inversiones<span class="sr-only"></span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ url_for('home') }}">Gestión de identidad<span class="sr-only"></span></a>
-            </li>
-
-                <form class="form-inline">
-                  <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                  </button>
-                </form>
-              </ul>
-            </div>
-          </nav>
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ url_for('home') }}">Inicio<span class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ url_for('boveda') }}">Boveda<span class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ url_for('contratos') }}">Contratos<span class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ url_for('transacciones') }}">Transacciones<span class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ url_for('inversiones') }}">Inversiones<span class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ url_for('perfil') }}">Gestión de identidad<span class="sr-only"></span></a>
+                        </li>
+                        <form class="form-inline">
+                            <button class="btn my-2 my-sm-0 nav_search-btn" type="submit">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </ul>
+                </div>
+            </nav>
         </div>
-      </header>
-      <section class="about_section layout_padding">
-        <div class="container  ">
-          <div class="heading_container heading_center">
-            <h1>
-            Información <span>General</span>
-            </h1>
-            <p>
-            
-            </p>
-          </div>
-          <div class="row">
-            <div class="col-md-6 ">
-              <div class="img-box">
-                <img src="" alt="">
-              </div>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="segment">
+                    <h2>Divisas</h2>
+                    <!-- Agrega aquí tu contenido para el resumen de divisas -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>USD</h3>
+                            <p id="usd-compra">Compra: --</p>
+                            <p id="usd-venta">Venta: --</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h3>EUR</h3>
+                            <p id="eur-compra">Compra: --</p>
+                            <p id="eur-venta">Venta: --</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6">
-              <div class="detail-box">
-            <link rel="stylesheet" href="{{ url_for('static', filename='css/after.css') }}">
-            <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-            <link rel="stylesheet" href="{{ url_for('static', filename='https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap') }}">
+            <div class="col-md-4">
+                <div class="segment">
+                    <h2>El mercado</h2>
+                    <!-- Agrega aquí tu contenido para el resumen del mercado -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>Dow Jones</h3>
+                            <p id="dowjones-price">--</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h3>NASDAQ</h3>
+                            <p id="nasdaq-price">--</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="segment">
+                    <h2>Billetera virtual</h2>
+                    <!-- Agrega aquí tu contenido para el resumen del cliente -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>Saldo</h3>
+                            <p>$1,000</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h3>Cambios</h3>
+                            <p>10</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function updateMarketData() {
+            $.ajax({
+                url: 'https://api.polygon.io/v2/aggs/ticker/INDU/prev?unadjusted=true&apiKey=M3uZw7o7Z_74c3oyzCCc6chvHf1ZhGQh',
+                method: 'GET',
+                success: function(data) {
+                    $('#dowjones-price').text(data.results[0].c);
+                },
+                error: function(error) {
+                    console.error('Error al obtener los datos del Dow Jones:', error);
+                }
+            });
+            
+            $.ajax({
+                url: 'https://api.polygon.io/v2/aggs/ticker/NQ/prev?unadjusted=true&apiKey=M3uZw7o7Z_74c3oyzCCc6chvHf1ZhGQh',
+                method: 'GET',
+                success: function(data) {
+                    $('#nasdaq-price').text(data.results[0].c);
+                },
+                error: function(error) {
+                    console.error('Error al obtener los datos del NASDAQ:', error);
+                }
+            });
 
-    </body>
+            $.ajax({
+                url: 'https://api.fastforex.io/fetch-one?from=USD&to=GTQ&api_key=15118b75fb-336262ee91-scv6ul',
+                method: 'GET',
+                success: function(data) {
+                    $('#usd-compra').text('Compra: ' + data.result.GTQ);
+                    $('#usd-venta').text('Venta: ' + data.result.GTQ);
+                },
+                error: function(error) {
+                    console.error('Error al obtener los datos de divisas:', error);
+                }
+            });
+            
+            $.ajax({
+                url: 'https://api.fastforex.io/fetch-one?from=EUR&to=GTQ&api_key=15118b75fb-336262ee91-scv6ul',
+                method: 'GET',
+                success: function(data) {
+                    $('#eur-compra').text('Compra: ' + data.result.GTQ);
+                    $('#eur-venta').text('Venta: ' + data.result.GTQ);
+                },
+                error: function(error) {
+                    console.error('Error al obtener los datos de divisas:', error);
+                }
+            });
+        }
 
-    <div id="countdown"></div>
+        updateMarketData(); // Actualiza los datos del mercado al cargar la página
+        setInterval(updateMarketData, 60000); // Actualiza los datos del mercado cada minuto (60000 milisegundos)
+    </script> 
+
+    <div class="container">
+      <div id="news-section">
+          <h2 class="text-center mb-4">Noticias Financieras</h2>
+          <div id="financial-news-carousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+              <div class="carousel-inner" role="listbox">
+                  <!-- Las noticias financieras se cargarán aquí dinámicamente -->
+              </div>
+              <a class="carousel-control-prev" href="#financial-news-carousel" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Anterior</span>
+              </a>
+              <a class="carousel-control-next" href="#financial-news-carousel" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Siguiente</span>
+              </a>
+          </div>
+      </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
     
+      $(document).ready(function() {
+          updateFinancialNews();
+      });
+
+      setInterval(updateFinancialNews, 20 * 60 * 1000);
+
+      function updateFinancialNews() {
+          var newsApiKey = 'd04240a13713473d9180fee3a7b9f7e3';
+          var financialNewsUrl = 'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=' + newsApiKey;
+
+          $.ajax({
+              url: financialNewsUrl,
+              method: 'GET',
+              success: function(response) {
+                  var financialNewsCarousel = $('#financial-news-carousel .carousel-inner');
+                  financialNewsCarousel.empty();
+
+                  for (var i = 0; i < 5; i++) {
+                      var news = response.articles[i];
+                      var activeClass = i === 0 ? 'active' : '';
+
+                      var financialNewsItem = $('<div class="carousel-item ' + activeClass + '"><div class="news-box"><a href="' + news.url + '"><img src="' + news.urlToImage + '" alt="' + news.title + '" class="img-fluid"><h3>' + news.title + '</h3><p>' + news.description + '</p></a></div></div>');
+                      financialNewsCarousel.append(financialNewsItem);
+                  }
+              },
+              error: function(error) {
+                  console.error('Error al obtener las noticias financieras:', error);
+              }
+          });
+      }
+
+      // Configurar el carrusel automáticamente
+      $('#financial-news-carousel').carousel({
+          interval: 5000 // Cambio automático cada 5 segundos
+      });
+
+  </script>
+  <div id="countdown"></div>
+
     <script>
         function countdown() {
             var remainingTimeInSeconds = parseInt('{{ remaining_time.total_seconds() }}');
@@ -109,4 +260,12 @@
         countdown();
     </script>
 </body>
+<body>
+  <div class="container">
+    <h2 class="text-center mb-4">Gráfico de Precios de Acciones</h2>
+    <canvas id="stock-chart" width="400" height="200"></canvas>
+</div>
+</body>
+
 </html>
+

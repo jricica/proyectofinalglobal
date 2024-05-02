@@ -14,6 +14,24 @@ body{
     background-position: center;
     background-attachment: fixed;
 }
+ /* Estilos para la barra de navegación */
+ .navbar-nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-item {
+    margin-right: 20px;
+}
+
+.navbar-brand {
+    margin-right: auto; /* Mueve el brand logo a la izquierda */
+}
+
+.nav_search-btn {
+    margin-left: auto; /* Mueve el botón de búsqueda a la derecha */
+}
+
 #logo {
     width: 200px; /* Cambia este valor al tamaño deseado */
     height: auto; /* Esto mantiene la relación de aspecto original */

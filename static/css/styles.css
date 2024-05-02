@@ -150,7 +150,7 @@ a:focus {
 }
 
 .custom_nav-container {
-  padding: 0;
+  padding: 20px;
 }
 
 .custom_nav-container .navbar-nav {
@@ -168,7 +168,7 @@ a:focus {
 }
 
 .custom_nav-container .navbar-nav .nav-item:hover .nav-link, .custom_nav-container .navbar-nav .nav-item.active .nav-link {
-  color: #00bbf0;
+  color: rgba(229,0,43,255);
 }
 
 .custom_nav-container .navbar-nav .nav-item.active .nav-link {
@@ -281,11 +281,11 @@ a:focus {
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 15px;
-  color: #af2222;
+  color: #ffffff;
 }
 
 .slider_section .detail-box p {
-  color: #aa2424;
+  color: #fefefe;
   font-size: 14px;
 }
 
@@ -306,7 +306,7 @@ a:focus {
 .slider_section .detail-box .btn-box .btn1 {
   display: inline-block;
   padding: 10px 15px;
-  background-color: #862727;
+  background-color: #00bbf0;
   color: #ffffff;
   border-radius: 0;
   -webkit-transition: all 0.3s;

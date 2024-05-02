@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(255, 255, 255);
+}
+
+.header_section {
+    background-color: rgb(255, 255, 255);
+    color: white;
+    padding: 0px 0;
+  }
+
+/* Estilos para la barra de navegación */
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    list-style: none; /* Eliminar los puntos de la lista */
+}
+
+.nav-item {
+    margin-right: 20px;
+}
+
+.navbar-brand {
+    margin-right: auto; /* Mueve el brand logo a la izquierda */
+}
+
+.section {
+    padding: 50px;
+}
+
+.section-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.section-content {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.section {
+    padding: 50px;
+}
+
+.section-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.section-content {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+/* Estilos para el contador */
+#countdown {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(229,0,43,255);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+  
+  /* Estilos adicionales */
+  .img-box {
+    margin-bottom: 70px;
+  }
+  
+  .detail-box {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+  }
+  .navbar-nav .nav-link {
+    border-bottom: none;
+}
