@@ -8,11 +8,15 @@
 }
 
 body{
-    background-color: rgb(78, 21, 21);
+    background-color: rgb(255, 255, 255);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+}
+#logo {
+    width: 200px; /* Cambia este valor al tamaño deseado */
+    height: auto; /* Esto mantiene la relación de aspecto original */
 }
 
 main{
@@ -36,7 +40,7 @@ main{
     justify-content: center;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    background-color: rgba(0, 128, 255, 0.5);
+    background-color: rgba(229,0,43,255);
 
 }
 
@@ -64,7 +68,7 @@ main{
 
 .caja__trasera button{
     padding: 10px 40px;
-    border: 2px solid #fff;
+    border: 2px solid #f8f8f8;
     font-size: 14px;
     background: transparent;
     font-weight: 600;
@@ -76,7 +80,7 @@ main{
 
 .caja__trasera button:hover{
     background: #fff;
-    color: #46A2FD;
+    color: rgba(229,0,43,255);
 }
 
 /*Formularios*/
@@ -97,7 +101,7 @@ main{
 .contenedor__login-register form{
     width: 100%;
     padding: 80px 20px;
-    background: white;
+    background: rgba(229,0,43,255);
     position: absolute;
     border-radius: 20px;
 }
@@ -106,7 +110,7 @@ main{
     font-size: 30px;
     text-align: center;
     margin-bottom: 20px;
-    color: #46A2FD;
+    color: #ffffff;
 }
 
 .contenedor__login-register form input{
@@ -124,10 +128,10 @@ main{
     margin-top: 40px;
     border: none;
     font-size: 14px;
-    background: #46A2FD;
+    background: #ffffff;
     font-weight: 600;
     cursor: pointer;
-    color: white;
+    color: rgb(0, 0, 0);
     outline: none;
 }
 

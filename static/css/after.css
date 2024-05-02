@@ -1,7 +1,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap");
 body{
-    background-image: url(bg4.jpg);
+    background-image: url(static\bg4.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

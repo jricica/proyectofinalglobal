@@ -3,67 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login y Registro</title>
+    <title>Login y Registero</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPMuKnRw-ZKMd1waN4s7ngLYdQjZYOQy3Al2oECtS4YLesMW57Is511bilwF-8IWgFU7-AuYLaIP-JFRn2TqtF8Wqikm9owmFEUolIqTIp71_luyyFDj1AO8txsUh8O8hNltlGwm5Vsc9p9EWwI0sWhd9kMoM83CxLs_Mb0B9G2DxC8sHUJEIMTfxa69b_/s320/ufm-bank-high-resolution-logo-transparent.png" type="">
+    <link rel="shortcut icon" href="static\bg7.jpg" type="">
     
-    <style>
-        /* Estilos CSS para el logo */
-        #logo {
-            width: 100px; /* ajustar el ancho según sea necesario */
-            height: auto; /* ajustar la altura automáticamente */
-            margin-top: 10px; /* ajustar el margen superior según sea necesario */
-            margin-left: 10px; /* ajustar el margen izquierdo según sea necesario */
-        }
-    </style>
+
+
+    <header>
+        <!-- Logo del BAC -->
+        <img id="logo" src="static\bg7.jpg" alt="Logo del BAC">
+    </header>
 
 </head>
 <body>
-    <header>
-        <!-- Logo del BAC -->
-        <img id="logo" src="URL_DEL_LOGO_DEL_BAC" alt="Logo del BAC">
-    </header>
+        <main>
+            
 
-    <main>
-        <div class="contenedor__todo">
-            <div class="caja__trasera">
-                <div class="caja__trasera-login">
-                    <h3>¿Ya tienes una cuenta?</h3>
-                    <p>Inicia sesión para entrar en la página</p>
-                    <button id="btn__iniciar-sesion">Iniciar Sesión</button>
+            <div class="contenedor__todo">
+                <div class="caja__trasera">
+                    <div class="caja__trasera-login">
+                        <h3>¿Ya tienes una cuenta?</h3>
+                        <p>Inicia sesión para entrar en la página</p>
+                        <button id="btn__iniciar-sesion">Iniciar Sesión</button>
+                    </div>
+                    <div class="caja__trasera-register">
+                        <h3>¿Aún no tienes una cuenta?</h3>
+                        <p>Regístrate para que puedas iniciar sesión</p>
+                        <button id="btn__registrarse">Regístrarse</button>
+                    </div>
                 </div>
-                <div class="caja__trasera-register">
-                    <h3>¿Aún no tienes una cuenta?</h3>
-                    <p>Regístrate para que puedas iniciar sesión</p>
-                    <button id="btn__registrarse">Regístrarse</button>
+
+                <!--Formulario de Login y registro-->
+                <div class="contenedor__login-register">
+                    <!--Login-->
+                    <form action="/login" class="formulario__login" method ="POST">
+                        <h2>Iniciar Sesión</h2>
+                        <input type="email" id="email" name="email" placeholder="email"required><br>
+                        <input type="password" id="password" name="password" placeholder="password"required><br><br>
+                        <button>Entrar</button>
+                    </form>
+
+                    
+                    <form action="/register" class="formulario__register" method="POST">
+                        <h2>Regístrate</h2>
+                        <input type="text" id="fullname" name="fullname" placeholder="Full Name" required><br>
+                        <input type="email" id="email" name="email" placeholder="email"required><br>
+                        <input type="text" id="username" name="username" placeholder="username" required><br>
+                        <input type="password" id="password" name="password" placeholder="password"required><br><br>
+                        <button>Regístrarse</button>
+                    </form>
                 </div>
+                
             </div>
 
-            <!--Formulario de Login y registro-->
-            <div class="contenedor__login-register">
-                <!--Login-->
-                <form action="login" class="formulario__login" method ="POST">
-                    <h2>Iniciar Sesión</h2>
-                    <input type="email" id="email" name="email" placeholder="email" required><br>
-                    <input type="password" id="password" name="password" placeholder="password" required><br><br>
-                    <button>Entrar</button>
-                </form>
-
-                <!--Register-->
-                <form action="submit" class="formulario__register" method="POST">
-                    <h2>Regístrate</h2>
-                    <input type="text" id="fullname" name="fullname" placeholder="Full Name" required><br>
-                    <input type="email" id="email" name="email" placeholder="email" required><br>
-                    <input type="text" id="username" name="username" placeholder="username" required><br>
-                    <input type="password" id="password" name="password" placeholder="password" required><br><br>
-                    <button>Regístrarse</button>
-                </form>
-            </div>
-        </div>
-    </main>
-
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='stylehome.css') }}">
+        </main>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/stylehome.css') }}">
 </body>
 </html>
