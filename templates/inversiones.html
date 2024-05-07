@@ -29,6 +29,31 @@
       .nav_search-btn {
           margin-left: auto; /* Mueve el botón de búsqueda a la derecha */
       }
+      .title {
+            text-align: center;
+            margin-top: 20px;
+
+      }
+      .container {
+            margin-top: 20px;
+            }
+      .card {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .table {
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+        .list {
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+
+
   </style>
 </head>
 <body>
@@ -73,6 +98,143 @@
     </header>
 <body>
 
+<div>
+    <div class="container">
+    <div class="title">
+    <h1>Inversiones</h1>
+    </div>
+    <p>En esta sección podrás ver tus inversiones y el rendimiento que han tenido.</p>
+</div>
+<div class="table">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Monto</th>
+                <th scope="col">Fecha de Inversión</th>
+                <th scope="col">Rendimiento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Acciones de Apple</td>
+                <td>$1000</td>
+                <td>01/01/2021</td>
+                <td>5%</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Acciones de Tesla</td>
+                <td>$2000</td>
+                <td>01/01/2021</td>
+                <td>10%</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Acciones de Amazon</td>
+                <td>$3000</td>
+                <td>01/01/2021</td>
+                <td>15%</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+<div>
+    <div class="container">
+    <div class="title">
+    <h1>Crear Inversión</h1>
+    </div>
+    <form action="/inversiones" method="POST">
+        <div class="form-group">
+            <label for="nombre">Nombre de la Inversión:</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="empresa">Empresa:</label>
+            <input type="text" class="form-control" id="empresa" name="empresa" required>
+        </div>
+        <div class="form-group">
+            <label for="monto">Monto de la Inversión:</label>
+            <input type="number" class="form-control" id="monto" name="monto" required>
+        </div>
+        <div class="form-group">
+            <label for="fecha">Fecha de Inversión:</label>
+            <input type="date" class="form-control" id="fecha" name="fecha" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Crear Inversión</button>
+    </form>
+</div>
+<div>
+    <div class ="container">
+    <div class="title">
+    <h1>Eliminar Inversión</h1>
+    </div>
+    <form action="/inversiones" method="POST">
+        <div class="form-group">
+            <label for="id">ID de la Inversión:</label>
+            <input type="number" class="form-control" id="id" name="id" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Eliminar Inversión</button>
+    </form>
+</div>
+</div>
+<div>
+    <div class="container">
+    <div class="title">
+    <h1>Ver Inversión</h1>
+    </div>
+    <form action="/inversiones" method="POST">
+        <div class="form-group">
+            <label for="id">ID de la Inversión:</label>
+            <input type="number" class="form-control" id="id" name="id" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Ver Inversión</button>
+    </form>
+</div>
+</div>
+<div class="list">
+    <h1>Inversiones</h1>
+    <ul>
+        <li>Acciones de Apple</li>
+        <li>Acciones de Tesla</li>
+        <li>Acciones de Amazon</li>
+    </ul>
+</div>
+<div>
+<div>
+    <div class="container">
+    <div class="title">
+    <h1>Ver comportamiento del mercado</h1>
+    </div>
+    <form action="/inversiones" method="POST">
+        <div class="form-group">
+            <label for="empresa">Empresa:</label>
+            <input type="text" class="form-control" id="empresa" name="empresa" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Ver Comportamiento</button>
+    </form>
+</div>
+<div>
+    <div class="container">
+    <div class="title">
+    <h1>Ver rendimiento de la inversión</h1>
+    </div>
+    <form action="/inversiones" method="POST">
+        <div class="form-group">
+            <label for="id">ID de la Inversión:</label>
+            <input type="number" class="form-control" id="id" name="id" required>
+        </div>
+        <div class="botton">
+        <button type="submit" class="btn btn-primary">Ver Rendimiento</button>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+  
 
 
 

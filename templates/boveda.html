@@ -72,10 +72,119 @@
     </nav>
     </header>
 <body>
+    <style>
+        .container {
+            padding-top: 30px;
+            padding-bottom: 20px;
+        }
+        .card {
+            background-color: #fff; /* Fondo del contenedor */
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Sombra */
+        }
 
+    </style>
+</head>
+<body>
 
-
-
+        <!-- Contenido principal -->
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title text-center">Bóveda - Almacenamiento de Información Confidencial</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Bienvenido a la Bóveda del Portal Financiero. Aquí puedes almacenar de forma segura tu información bancaria, contratos, información personal de propiedades y más.</p>
+                    <p class="card-text">Utiliza los botones a continuación para acceder a las diferentes secciones de la Bóveda:</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="#" class="btn btn-primary btn-block">Información Bancaria</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#" class="btn btn-primary btn-block">Contratos</a>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <a href="#" class="btn btn-primary btn-block">Transacciones</a>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#claveModal">Ingresar Clave</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Resumen de Transacciones -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Resumen de Transacciones:</h5>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        <!-- Aquí puedes agregar el resumen de las transacciones -->
+                        <p>Transacción 1: $100</p>
+                        <p>Transacción 2: $150</p>
+                        <p>Transacción 3: $200</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Resumen de Contratos -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Resumen de Contratos:</h5>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        <!-- Aquí puedes agregar el resumen de los contratos -->
+                        <p>Contrato 1: Acuerdo de Alquiler</p>
+                        <p>Contrato 2: Contrato de Préstamo</p>
+                        <p>Contrato 3: Contrato de Servicios</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Resumen de Actividad -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Resumen de Actividad:</h5>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        <!-- Aquí puedes agregar el resumen de actividad -->
+                        <p>Fecha y Hora: 2024-05-10 08:30 AM</p>
+                        <p>Fecha y Hora: 2024-05-09 10:15 AM</p>
+                        <p>Fecha y Hora: 2024-05-08 03:45 PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Modal para ingresar la clave -->
+        <div class="modal fade" id="claveModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ingresar Clave</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="password" class="form-control" id="clave" placeholder="Ingrese su clave">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
 </body>
         
     <!-- Footer -->

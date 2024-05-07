@@ -72,12 +72,62 @@
     </nav>
     </header>
 <body>
-
-
-
-
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Transacciones</h1>
+                    <p>Realiza transacciones de forma segura y rápida</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-box">
+                        <h2>Realizar Transacción</h2>
+                        <form action="{{ url_for('transacciones') }}" method="POST">
+                            <div class="form-group">
+                                <label for="cuenta_origen">Cuenta de Origen</label>
+                                <input type="text" class="form-control" id="cuenta_origen" name="cuenta_origen" required>
+                            </div>
+                            <div class="form-group ">
+                                <label for="cuenta_destino">Cuenta de Destino</label>
+                                <input type="text" class="form-control" id="cuenta_destino" name="cuenta_destino" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="monto">Monto</label>
+                                <input type="number" class="form-control" id="monto" name="monto" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Realizar Transacción</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+ <div class ="list">
+    <h2>Historial de Transacciones</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Cuenta de Origen</th>
+                <th scope="col">Cuenta de Destino</th>
+                <th scope="col">Monto</th>
+                <th scope="col">Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaccion in transacciones %}
+                <tr>
+                    <td>{{ transaccion.cuenta_origen }}</td>
+                    <td>{{ transaccion.cuenta_destino }}</td>
+                    <td>{{ transaccion.monto }}</td>
+                    <td>{{ transaccion.fecha }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 </body>
-        
     <!-- Footer -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
