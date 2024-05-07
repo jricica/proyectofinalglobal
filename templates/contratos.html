@@ -29,7 +29,22 @@
       .nav_search-btn {
           margin-left: auto; /* Mueve el botón de búsqueda a la derecha */
       }
+      /* Estilo del cuadro del formulario */
+      .form-box {
+          border: 2px solid #ccc;
+          padding: 20px;
+          border-radius: 10px;
+          margin-bottom: 20px;
+      }
+  
+      /* Estilo de los mensajes de error */
+      .error-message {
+          color: red;
+          font-size: 14px;
+          margin-top: 5px;
+      }
   </style>
+  
 </head>
 <body>
     <!-- Navbar -->
@@ -73,26 +88,40 @@
     </header>
 <body>
 <div>
-    <h1>Crear Contrato</h1>
-    <form id="contractForm" action="{{ url_for('contratos') }}" method="POST">
-        <div class="form-group">
-            <label for="title">Título del Contrato:</label>
-            <input type="text" class="form-control" id="title" name="title" required>
-        </div>
-        <div class="form-group">
-            <label for="parties">Partes Involucradas:</label>
-            <textarea class="form-control" id="parties" name="parties" rows="3" required></textarea>
-        </div>
-        <div class="form-group">
-            <label for="details">Detalles del Contrato:</label>
-            <textarea class="form-control" id="details" name="details" rows="5" required></textarea>
-        </div>
-        <div class="form-group">
-            <label for="signature">Firma:</label>
-            <input type="text" class="form-control" id="signature" name="signature" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Crear Contrato</button>
-    </form>
+    <div class="form-box">
+        <h1>Crear Contrato</h1>
+        <form id="contractForm" action="{{ url_for('contratos') }}" method="POST" onsubmit="return validateContractForm()">
+            <div class="form-group">
+                <label for="title">Título del Contrato:</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+                <div id="titleError" class="error-message"></div> <!-- Mensaje de error para el título -->
+            </div>
+            <div class="form-group">
+                <label for="parties">Partes Involucradas:</label>
+                <textarea class="form-control" id="parties" name="parties" rows="3" required></textarea>
+                <div id="partiesError" class="error-message"></div> <!-- Mensaje de error para las partes involucradas -->
+            </div>
+            <div class="form-group">
+                <label for="details">Detalles del Contrato:</label>
+                <textarea class="form-control" id="details" name="details" rows="5" required></textarea>
+                <div id="detailsError" class="error-message"></div> <!-- Mensaje de error para los detalles del contrato -->
+            </div>
+            <div class="form-group">
+                <label for="signature">Firma:</label>
+                <input type="text" class="form-control" id="signature" name="signature" required>
+                <div id="signatureError" class="error-message"></div> 
+            </div>
+            <div class="form-group">
+                <label for="dateSigned">Fecha de Firma:</label>
+                <input type="date" class="form-control" id="dateSigned" name="dateSigned" required>
+                <div id="dateSignedError" class="error-message"></div> <!-- Mensaje de error para la fecha de firma -->
+            </div>
+            <div class="form-group">
+                <label for="dateTerminated">Fecha de Cese:</label>
+                <input type="date" class="form-control" id="dateTerminated" name="dateTerminated">
+                <div id="dateTerminatedError" class="error-message"></div> <!-- Mensaje de error para la fecha de cese -->
+            </div>
+            <button type="submit" class="btn btn-primary">Crear Contrato</button>
 
     <h1>Contratos</h1>
     <table class="table">
