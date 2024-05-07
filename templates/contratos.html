@@ -72,57 +72,129 @@
     </nav>
     </header>
 <body>
+<div>
+    <h1>Crear Contrato</h1>
+    <form id="contractForm" action="{{ url_for('contratos') }}" method="POST">
+        <div class="form-group">
+            <label for="title">Título del Contrato:</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="parties">Partes Involucradas:</label>
+            <textarea class="form-control" id="parties" name="parties" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="details">Detalles del Contrato:</label>
+            <textarea class="form-control" id="details" name="details" rows="5" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="signature">Firma:</label>
+            <input type="text" class="form-control" id="signature" name="signature" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Crear Contrato</button>
+    </form>
+
+    <h1>Contratos</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Con Quién</th>
+                <th>Fecha de Firma</th>
+                <th>Fecha de Cese</th>
+                <th>Detalles</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contract in contracts %}
+                <tr>
+                    <td>{{ contract.id }}</td>
+                    <td>{{ contract.title }}</td>
+                    <td>{{ contract.parties }}</td>
+                    <td>{{ contract.date_signed.strftime('%Y-%m-%d') }}</td>
+                    <td>{{ contract.date_terminated.strftime('%Y-%m-%d') if contract.date_terminated else "N/A" }}</td>
+                    <td>{{ contract.details }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+<!-- Contenedor para los detalles del contrato -->
+<div id="contractDetailsContainer"></div>
+<!-- Script para mostrar los detalles del contrato -->
+<script>
+    function showDetails(contractId) {
+        // Realizar una solicitud AJAX para obtener los detalles del contrato
+        $.ajax({
+            url: '/get_contract_details',
+            type: 'GET',
+            data: { id: contractId },
+            success: function(response) {
+                // Mostrar los detalles del contrato en el contenedor
+                $('#contractDetailsContainer').html(response);
+            },
+            error: function(xhr, status, error) {
+                // Manejar errores
+                console.error(xhr.responseText);
+            }
+        });
+    }
+</script>
 
 
-
-
+<!-- Tus enlaces JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
         
-    <!-- Footer -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}">
+ <!-- Footer -->
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ <script src="{{ url_for('static', filename='js/script.js') }}">
 
-  </script>
-  <div id="countdown"></div>
+</script>
+<div id="countdown"></div>
 
-    <script>
-        function countdown() {
-            var remainingTimeInSeconds = parseInt('{{ remaining_time.total_seconds() }}');
-            var countdownElement = document.getElementById('countdown');
+ <script>
+     function countdown() {
+         var remainingTimeInSeconds = parseInt('{{ remaining_time.total_seconds() }}');
+         var countdownElement = document.getElementById('countdown');
 
-            var intervalId = setInterval(function() {
-                if (remainingTimeInSeconds <= 0) {
-                    clearInterval(intervalId);
-                    countdownElement.innerHTML = 'Session expired';
-                } else {
-                    var hours = Math.floor(remainingTimeInSeconds / 3600);
-                    var minutes = Math.floor((remainingTimeInSeconds % 3600) / 60);
-                    var seconds = remainingTimeInSeconds % 60;
+         var intervalId = setInterval(function() {
+             if (remainingTimeInSeconds <= 0) {
+                 clearInterval(intervalId);
+                 countdownElement.innerHTML = 'Session expired';
+             } else {
+                 var hours = Math.floor(remainingTimeInSeconds / 3600);
+                 var minutes = Math.floor((remainingTimeInSeconds % 3600) / 60);
+                 var seconds = remainingTimeInSeconds % 60;
 
-                    countdownElement.innerHTML = hours + 'h ' + minutes + 'm ' + seconds + 's';
-                    remainingTimeInSeconds--;
-                }
-            }, 1000);
-        }
+                 countdownElement.innerHTML = hours + 'h ' + minutes + 'm ' + seconds + 's';
+                 remainingTimeInSeconds--;
+             }
+         }, 1000);
+     }
 
-        countdown();
-    </script>
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>Ubicación</h3>
-                <p>Dirección: 123 Calle Principal, Guatemala, Guatemala</p>
-                <p>Teléfono: +123 456 789</p>
-            </div>
-            <div class="footer-section">
-                <h3>Más Información</h3>
-                <p>Horario de Atención: Lunes a Viernes, 9:00am - 5:00pm</p>
-                <p>Email: securesphere@BAC.com</p>
-            </div>
-        </div>
-    </footer>
+     countdown();
+ </script>
+ <footer>
+     <div class="footer-container">
+         <div class="footer-section">
+             <h3>Ubicación</h3>
+             <p>Dirección: 123 Calle Principal, Guatemala, Guatemala</p>
+             <p>Teléfono: +123 456 789</p>
+         </div>
+         <div class="footer-section">
+             <h3>Más Información</h3>
+             <p>Horario de Atención: Lunes a Viernes, 9:00am - 5:00pm</p>
+             <p>Email: securesphere@BAC.com</p>
+         </div>
+     </div>
+ </footer>
 </body>
 </html>
 

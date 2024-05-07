@@ -9,19 +9,14 @@ import secrets
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "32ddaaffe3894d8dac05c62de02453ñ"
-# Configuración de la primera base de datos
+# Configuración de la base de datos
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
-app.config["SQLALCHEMY_BINDS"] = {
-    'users': 'sqlite:///users.db',
-    'logs': 'sqlite:///logs.db'
-}
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
 
 # Definir modelo para los registros de ingreso y logout
 class Log(db.Model):
-    __bind_key__ = 'logs'
     id = db.Column(db.Integer, primary_key=True)
     event = db.Column(db.String(50), nullable=False)
     user_id = db.Column(db.String(50))
@@ -32,35 +27,43 @@ class Log(db.Model):
 
 # Modelo para los tokens utilizados
 class UsedToken(db.Model):
-    __bind_key__ = 'logs'
     id = db.Column(db.Integer, primary_key=True)
     token = db.Column(db.String(200), unique=True, nullable=False)
 
 # Modelo para los usuarios
 class User(db.Model):
-    __bind_key__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     fullname = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     username = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(100), nullable=False)
+    contracts = db.relationship('Contract', backref='user', lazy=True)
 
     def __repr__(self):
         return f"User('{self.fullname}', '{self.email}', '{self.username}')"
 
 # Modelo para los detalles del usuario
 class UserDetails(db.Model):
-    __bind_key__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     address = db.Column(db.String(100))
     phone_number = db.Column(db.String(20), nullable=True)  # Permitir valores nulos
 
-    # Relación con el modelo User
-    user = db.relationship('User', backref=db.backref('details', uselist=False))
-
     def __repr__(self):
         return f"UserDetails('{self.user_id}', '{self.address}', '{self.phone_number}')"
+    
+# Modelo para los contratos
+class Contract(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    parties = db.Column(db.String(200), nullable=False)
+    details = db.Column(db.Text, nullable=False)
+    date_signed = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    date_terminated = db.Column(db.DateTime)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    def __repr__(self):
+        return f"Contract('{self.title}', '{self.date_signed}', '{self.parties}')"
 
 # Función decoradora para requerir token
 def token_required(f):
@@ -134,6 +137,7 @@ def home():
 @app.route("/user_dashboard")
 def user_dashboard():
     if session.get('logged_in'):
+        user_id = session.get('user_id')  # Obtener el ID de usuario de la sesión
         token = session.get('token')
         if token:
             try:
@@ -154,7 +158,7 @@ def user_dashboard():
                 db.session.commit()
             
             return render_template('user_dashboard.html', remaining_time=remaining_time())
-    return redirect(url_for('home'))
+    return redirect(url_for('login'))
 
 # Ruta de inicio de sesión
 @app.route("/login", methods=["POST"])
@@ -166,6 +170,7 @@ def login():
 
     if user and user.password == password:
         session['logged_in'] = True
+        session['user_id'] = user.id  # Aquí se establece la clave 'user_id' en la sesión
         
         # Generar nueva clave secreta
         new_secret_key = generate_secret_key()
@@ -232,11 +237,39 @@ def boveda():
     remaining = remaining_time()  # O cualquier otra forma de obtener remaining_time
     return render_template("boveda.html", remaining_time=remaining)
 
-
-@app.route("/contratos")
+# Ruta para mostrar los contratos
+@app.route("/contratos", methods=["GET", "POST"])
 def contratos():
+    if request.method == "POST":
+        title = request.form.get("title")
+        parties = request.form.get("parties")
+        details = request.form.get("details")
+        signature = request.form.get("signature")
+
+        if title and parties and details and signature:
+            # Crear un nuevo contrato
+            new_contract = Contract(title=title, parties=parties, details=details, user_id=session['user_id'])
+            db.session.add(new_contract)
+            db.session.commit()
+
+            # Redirigir a la página de contratos
+            return redirect(url_for('contratos'))
+        else:
+            return make_response("Por favor, complete todos los campos del contrato", 400)
+    else:
+        contracts = Contract.query.all()
+        remaining = remaining_time()  # Obtener el tiempo restante antes del cierre de sesión
+        # Mostrar la página de contratos
+        return render_template("contratos.html", contracts=contracts, remaining_time=remaining)
+
+
+
+# Ruta para obtener los detalles de un contrato
+@app.route("/get_contract_details/<int:contract_id>")
+def get_contract_details(contract_id):
+    contract = Contract.query.get_or_404(contract_id)
     remaining = remaining_time()  # O cualquier otra forma de obtener remaining_time
-    return render_template("contratos.html", remaining_time=remaining)
+    return render_template("contract_details.html", contract=contract, remaining_time=remaining)
 
 @app.route("/inversiones")
 def inversiones():
