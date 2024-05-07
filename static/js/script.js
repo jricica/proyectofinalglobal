@@ -62,3 +62,6 @@ anchoPage();
             caja_trasera_login.style.opacity = "1";
         }
 }
+
+
+

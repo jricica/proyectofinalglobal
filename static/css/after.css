@@ -95,22 +95,22 @@ body {
 }
 
 .detail-box {
-  padding: 20px;
+  padding: 30px;
   background-color: #ffffff;
   border-radius: 5px;
 }
+
 
 /* Estilos para los segmentos */
 .segment {
   border: 2px solid #ccc;
   padding: 20px;
-  margin-bottom: 20px;
+  margin-top: 40px; /* Aumenta el margen inferior para mover las cajas hacia abajo */
   border-radius: 8px;
   background-color: #f9f9f9;
 }
-
 .segment h2 {
-  margin-top: 0;
+  margin-top: 15px;
   margin-bottom: 20px;
   font-size: 20px;
   color: rgba(229,0,43,255);
@@ -141,8 +141,8 @@ body {
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 5px;
-  margin: right; /* Centra el carrusel */
-  max-width: 800px; /* Limita el ancho del carrusel */
+  margin: left; /* Centra el carrusel */
+  max-width: 900px; /* Limita el ancho del carrusel */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
  ;
 }
@@ -157,9 +157,8 @@ body {
 }
 
 /* Ajustes para las flechas de navegación */
-.carousel-control-prev,
 .carousel-control-next {
-  width: 10px%; /* Ajusta el ancho para evitar la superposición con el contenido */
+  width: 40px; /* Ajusta el ancho para evitar la superposición con el contenido */
 }
 
 .carousel-control-prev-icon,
@@ -176,8 +175,11 @@ body {
 .carousel-control-next-icon:before {
   color: rgba(229,0,43,255); /* Color del icono */
 }
-/* Ajustes para las flechas de navegación */.carousel-control-prev {
-  left: -10%; /* Ajusta la posición para evitar la superposición */
+/* Ajustes para las flechas de navegación */.carousel-control-next {
+  right: -10%; /* Ajusta la posición para evitar la superposición */
+}
+.carousel-control-prev {
+  left: -10%;
 }
 
 .carousel-control-prev,
@@ -237,4 +239,35 @@ body {
 #financial-news-carousel {
   width: 80%; /* Ajusta el ancho del carrusel */
   margin: 0 auto; /* Centra el carrusel horizontalmente */
+}
+
+footer {
+  background-color: #f2f2f2;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  width: 45%;
+  margin-bottom: 20px;
+}
+
+.footer-section h3 {
+  color: #333;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.footer-section p {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 5px;
 }

@@ -1,71 +1,15 @@
-<section>
-    <h2>Share Behavior</h2>
-    <div class="graph-box">
-        <h3>Amazon</h3>
-        <canvas id="amazon-graph"></canvas>
+ <!-- Main Content -->
+ <div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Contratos</h5>
+                    <p class="card-text">En esta sección podrás visualizar los contratos que has realizado con el banco.</p>
+                    <a href="#" class="btn btn-primary">Ver Contratos</a>
+                </div>
+            </div>
+        </div>
+        <!-- More cards can be added here -->
     </div>
-    <div class="graph-box">
-        <h3>Google</h3>
-        <canvas id="google-graph"></canvas>
-    </div>
-    <div class="graph-box">
-        <h3>Windows</h3>
-        <canvas id="windows-graph"></canvas>
-    </div>
-    <div class="graph-box">
-        <h3>Apple</h3>
-        <canvas id="apple-graph"></canvas>
-    </div>
-</section>
-
-<script>
-    // Get the canvas elements
-    const amazonGraph = document.getElementById('amazon-graph');
-    const googleGraph = document.getElementById('google-graph');
-    const windowsGraph = document.getElementById('windows-graph');
-    const appleGraph = document.getElementById('apple-graph');
-
-    // Update the graph data and redraw
-    function updateGraphs() {
-        // Example data
-        const amazonData = [10, 20, 30, 40];
-        const googleData = [50, 60, 70, 80];
-        const windowsData = [90, 100, 110, 120];
-        const appleData = [130, 140, 150, 160];
-
-        // Update the graph data
-        updateGraph(amazonGraph, amazonData);
-        updateGraph(googleGraph, googleData);
-        updateGraph(windowsGraph, windowsData);
-        updateGraph(appleGraph, appleData);
-    }
-
-    // Update a graph with new data
-    function updateGraph(graph, data) {
-        // Update the graph with new data
-        // You will need to use a library like Chart.js or D3.js to draw the graphs
-
-        // Example using Chart.js
-        const ctx = graph.getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['January', 'February', 'March', 'April'],
-                datasets: [{
-                    label: 'Share',
-                    data: data,
-                    backgroundColor: 'rgba(0, 123, 255, 0.5)',
-                    borderColor: 'rgba(0, 123, 255, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false
-            }
-        });
-    }
-
-    // Call the updateGraphs function to initially draw the graphs
-    updateGraphs();
-</script>
+</div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Portal Financiero</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -30,42 +30,48 @@
           margin-left: auto; /* Mueve el botón de búsqueda a la derecha */
       }
   </style>
-    <img id="logo" src="static\bg7.jpg" alt="Logo del BAC" style="width: 200px; height: auto;">
 </head>
 <body>
-    <header class="header_section">
-        <div class="container-fluid">
-            <nav class="navbar navbar-expand-lg custom_nav-container">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ url_for('home') }}">Inicio<span class="sr-only"></span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ url_for('boveda') }}">Boveda<span class="sr-only"></span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ url_for('contratos') }}">Contratos<span class="sr-only"></span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ url_for('transacciones') }}">Transacciones<span class="sr-only"></span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ url_for('inversiones') }}">Inversiones<span class="sr-only"></span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ url_for('perfil') }}">Gestión de identidad<span class="sr-only"></span></a>
-                        </li>
-                        <form class="form-inline">
-                            <button class="btn my-2 my-sm-0 nav_search-btn" type="submit">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </button>
-                        </form>
-                    </ul>
-                </div>
-            </nav>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="static\bg7.jpg" alt="Logo del BAC" style="width: 150px; height: auto;">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home') }}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('boveda') }}">Bóveda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('boveda') }}">Contratos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Transacciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Inversiones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"href="{{ url_for('perfil') }}"">Perfil</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+            </div>
         </div>
+    </nav>
     </header>
+<body>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -120,7 +126,7 @@
             </div>
         </div>
     </div>
-  
+<div> 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         function updateMarketData() {
@@ -235,6 +241,88 @@
       });
 
   </script>
+
+  <div class="container">
+    <div class="row">
+<div class="col-md-4">
+    <div class="segment">
+            <h2>Calculadora de Préstamos</h2>
+            <form id="loan-calculator">
+                <div class="form-group">
+                    <label for="loan-amount">Monto del Préstamo</label>
+                    <input type="number" class="form-control" id="loan-amount" placeholder="Ingrese el monto del préstamo">
+                </div>
+                <div class="form-group">
+                    <label for="interest-rate">Tasa de Interés Anual (%)</label>
+                    <input type="number" class="form-control" id="interest-rate" placeholder="Ingrese la tasa de interés">
+                </div>
+                <div class="form-group">
+                    <label for="loan-term">Plazo del Préstamo (en años)</label>
+                    <input type="number" class="form-control" id="loan-term" placeholder="Ingrese el plazo del préstamo">
+                </div>
+                <button type="button" class="btn btn-primary" onclick="calculateLoan()">Calcular</button>
+                <div id="loan-results"></div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function calculateLoan() {
+            var loanAmount = document.getElementById('loan-amount').value;
+            var interestRate = document.getElementById('interest-rate').value / 100;
+            var loanTerm = document.getElementById('loan-term').value;
+            
+            var monthlyInterestRate = interestRate / 12;
+            var numberOfPayments = loanTerm * 12;
+            
+            var monthlyPayment = (loanAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments));
+            var totalInterest = (monthlyPayment * numberOfPayments) - loanAmount;
+            
+            document.getElementById('loan-results').innerHTML = "<h3>Pago Mensual Estimado:</h3><p>$" + monthlyPayment.toFixed(2) + "</p><h3>Total de Intereses:</h3><p>$" + totalInterest.toFixed(2) + "</p>";
+        }
+    </script>
+
+    <div class="col-md-4">
+        <div class="segment">
+            <h2>Calculadora de Ahorro</h2>
+            <form id="savings-calculator">
+                <div class="form-group">
+                    <label for="initial-amount">Monto Inicial</label>
+                    <input type="number" class="form-control" id="initial-amount" placeholder="Ingrese el monto inicial">
+                </div>
+                <div class="form-group">
+                    <label for="monthly-saving">Ahorro Mensual</label>
+                    <input type="number" class="form-control" id="monthly-saving" placeholder="Ingrese el ahorro mensual">
+                </div>
+                <div class="form-group">
+                    <label for="interest-rate-savings">Tasa de Interés Anual (%)</label>
+                    <input type="number" class="form-control" id="interest-rate-savings" placeholder="Ingrese la tasa de interés">
+                </div>
+                <div class="form-group">
+                    <label for="saving-years">Años de Ahorro</label>
+                    <input type="number" class="form-control" id="saving-years" placeholder="Ingrese los años de ahorro">
+                </div>
+                <button type="button" class="btn btn-primary" onclick="calculateSavings()">Calcular</button>
+                <div id="savings-results"></div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function calculateSavings() {
+            var initialAmount = document.getElementById('initial-amount').value;
+            var monthlySaving = document.getElementById('monthly-saving').value;
+            var interestRateSavings = document.getElementById('interest-rate-savings').value / 100;
+            var savingYears = document.getElementById('saving-years').value;
+            
+            var monthlyInterestRateSavings = interestRateSavings / 12;
+            var numberOfSavingMonths = savingYears * 12;
+            
+            var futureValue = initialAmount * Math.pow(1 + monthlyInterestRateSavings, numberOfSavingMonths) + (monthlySaving * ((Math.pow(1 + monthlyInterestRateSavings, numberOfSavingMonths) - 1) / monthlyInterestRateSavings));
+            
+            document.getElementById('savings-results').innerHTML = "<h3>Valor Futuro del Ahorro:</h3><p>$" + futureValue.toFixed(2) + "</p>";
+        }
+    </script>
   <div id="countdown"></div>
 
     <script>
@@ -259,6 +347,22 @@
 
         countdown();
     </script>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Ubicación</h3>
+                <p>Dirección: 123 Calle Principal, Guatemala, Guatemala</p>
+                <p>Teléfono: +123 456 789</p>
+            </div>
+            <div class="footer-section">
+                <h3>Más Información</h3>
+                <p>Horario de Atención: Lunes a Viernes, 9:00am - 5:00pm</p>
+                <p>Email: securesphere@BAC.com</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
+
+
 

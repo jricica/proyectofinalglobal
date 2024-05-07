@@ -1,3 +1,4 @@
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -9,7 +10,7 @@ body {
     background-color: rgb(255, 255, 255);
     color: white;
     padding: 0px 0;
-  }
+}
 
 /* Estilos para la barra de navegación */
 .navbar-nav {
@@ -20,12 +21,42 @@ body {
 
 .nav-item {
     margin-right: 20px;
+    position: relative; /* Establece la posición relativa para el contenedor del enlace */
 }
 
 .navbar-brand {
     margin-right: auto; /* Mueve el brand logo a la izquierda */
 }
 
+/* Estilos para el cuadro desplegable */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-top: 10px; /* Ajusta la distancia entre la sección y el cuadro */
+    left: 0; /* Asegura que el cuadro aparezca debajo del enlace */
+    top: calc(100% + 10px); /* Ajusta la posición vertical debajo del enlace */
+}
+
+.nav-item:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-item {
+    padding: 10px;
+    color: red; /* Color rojo */
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+/* Estilos adicionales */
 .section {
     padding: 50px;
 }
@@ -42,22 +73,6 @@ body {
     margin-bottom: 30px;
 }
 
-.section {
-    padding: 50px;
-}
-
-.section-heading {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-.section-content {
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 30px;
-}
-/* Estilos para el contador */
 #countdown {
     position: fixed;
     top: 20px;
@@ -67,18 +82,68 @@ body {
     padding: 10px 20px;
     border-radius: 5px;
     font-size: 18px;
-  }
-  
-  /* Estilos adicionales */
-  .img-box {
+}
+
+.img-box {
     margin-bottom: 70px;
-  }
-  
-  .detail-box {
+}
+
+.detail-box {
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 5px;
-  }
-  .navbar-nav .nav-link {
+}
+
+.navbar-nav .nav-link {
     border-bottom: none;
+}
+
+header {
+    background-color: #9c1c1c;
+    color: #fff;
+    padding: 70px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 90px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.main-content {
+    padding: 100px;
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 30px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+footer {
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 50px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
