@@ -161,35 +161,38 @@ def user_dashboard():
     return redirect(url_for('login'))
 
 # Ruta de inicio de sesión
-@app.route("/login", methods=["POST"])
+@app.route("/login", methods=["GET", "POST"])
 def login():
-    email = request.form.get("email")
-    password = request.form.get("password")
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
 
-    user = User.query.filter_by(email=email).first()
+        user = User.query.filter_by(email=email).first()
 
-    if user and user.password == password:
-        session['logged_in'] = True
-        session['user_id'] = user.id  # Aquí se establece la clave 'user_id' en la sesión
-        
-        # Generar nueva clave secreta
-        new_secret_key = generate_secret_key()
-        app.config["SECRET_KEY"] = new_secret_key
-        
-        token = jwt.encode({'user': user.email, 'exp': datetime.utcnow() + timedelta(seconds=5000)}, new_secret_key, algorithm='HS256')
-        session['token'] = token
-        
-        # Guardar registro de ingreso en la base de datos
-        log = Log(event="login", user_id=user.email)
-        db.session.add(log)
-        db.session.commit()
-        
-        # Iniciar temporizador para el token
-        start_token_timer()
-        
-        return redirect(url_for('user_dashboard'))
+        if user and user.password == password:
+            session['logged_in'] = True
+            session['user_id'] = user.id  # Aquí se establece la clave 'user_id' en la sesión
+            
+            # Generar nueva clave secreta
+            new_secret_key = generate_secret_key()
+            app.config["SECRET_KEY"] = new_secret_key
+            
+            token = jwt.encode({'user': user.email, 'exp': datetime.utcnow() + timedelta(seconds=5000)}, new_secret_key, algorithm='HS256')
+            session['token'] = token
+            
+            # Guardar registro de ingreso en la base de datos
+            log = Log(event="login", user_id=user.email)
+            db.session.add(log)
+            db.session.commit()
+            
+            # Iniciar temporizador para el token
+            start_token_timer()
+            
+            return redirect(url_for('user_dashboard'))
+        else:
+            return make_response('Could not verify!', 403, {'WWW-Authenticate': 'Basic realm="Login Required"'})
     else:
-        return make_response('Could not verify!', 403, {'WWW-Authenticate': 'Basic realm="Login Required"'})
+        return render_template('login.html')
 
 # Función para cerrar sesión de usuario
 @app.route("/logout", methods=["POST"])
@@ -261,8 +264,6 @@ def contratos():
         remaining = remaining_time()  # Obtener el tiempo restante antes del cierre de sesión
         # Mostrar la página de contratos
         return render_template("contratos.html", contracts=contracts, remaining_time=remaining)
-
-
 
 # Ruta para obtener los detalles de un contrato
 @app.route("/get_contract_details/<int:contract_id>")
