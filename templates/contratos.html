@@ -144,6 +144,9 @@
                     <td>{{ contract.date_signed.strftime('%Y-%m-%d') }}</td>
                     <td>{{ contract.date_terminated.strftime('%Y-%m-%d') if contract.date_terminated else "N/A" }}</td>
                     <td>{{ contract.details }}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" onclick="showDetails({{ contract.id }})">Ver Detalles</button>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
